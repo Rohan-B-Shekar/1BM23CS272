@@ -1,0 +1,82 @@
+#include <stdio.h>
+#include <string.h>
+
+int index1 = 0, pos = 0, top = -1, length;
+char symbol, temp, infix[20], postfix[20], stack[20];
+
+void infixtopostfix();
+void push(char symbol);
+char pop();
+int pred(char symbol);
+
+int main() {
+    printf("Enter infix expression: \n");
+    scanf("%s", infix);
+    infixtopostfix();
+    postfix[pos] = '\0';
+    printf("\nInfix expression: \n%s", infix);
+    printf("\nPostfix expression: \n%s\n", postfix);
+    return 0;
+}
+
+void infixtopostfix() {
+    length = strlen(infix);
+    push('#');
+
+    while (index1 < length) {
+        symbol = infix[index1];
+        switch (symbol) {
+            case '(':
+                push(symbol);
+                break;
+            case ')':
+                temp = pop();
+                while (temp != '(') {
+                    postfix[pos++] = temp;
+                    temp = pop();
+                }
+                break;
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+            case '^':
+                while (pred(stack[top]) >= pred(symbol)) {
+                    temp = pop();
+                    postfix[pos++] = temp;
+                }
+                push(symbol);
+                break;
+            default:
+                postfix[pos++] = symbol;
+        }
+        index1++;
+    }
+
+    while (top >= 0) {
+        temp = pop();
+        postfix[pos++] = temp;
+    }
+}
+
+void push(char symbol) {
+    top++;
+    stack[top] = symbol;
+}
+
+char pop() {
+    return stack[top--];
+}
+
+int pred(char symbol) {
+    switch (symbol) {
+        case '^': return 3;
+        case '*':
+        case '/': return 2;
+        case '+':
+        case '-': return 1;
+        case '(': return 0;
+        case '#': return -1;
+        default: return -1;
+    }
+}
