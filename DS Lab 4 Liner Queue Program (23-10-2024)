@@ -1,0 +1,165 @@
+
+#include<stdio.h>
+#define SIZE 3
+int queue[SIZE];
+int front =-1;
+int rear =-1;
+
+void insert(int value){
+    if (rear == SIZE -1){
+        printf("Queue Overflow, Cannot insert %d\n",value);
+    }
+    else{
+        if (front ==-1) front =0;
+        rear++;
+        queue[rear]=value;
+        printf("Inserted %d into the queue \n",value);
+    }
+}
+
+void delete(){
+    if (front==-1 || front>rear) {
+        printf("Queue Underflow, Cannot delete element \n");
+    }
+    else{
+        printf("Deleted %d from the queue \n", queue[front]);
+        front++;
+        if(front>rear){
+            front=rear=-1;
+        }
+    }
+}
+
+void display(){
+    if (front == -1 || front > rear){
+        printf("Queue is empty\n");
+    }
+    else{
+        printf("Queue elements are: ");
+        for (int i = front; i <= rear; i++){
+            printf("%d ", queue[i]);  // Added space after %d
+        }
+        printf("\n");
+    }
+}
+
+
+int main(){
+    int choice,value;
+    while(1){
+        printf("\n Queue Operations:\n");
+        printf("1.Insert\n");
+        printf("2.Delete\n");
+        printf("3.Display\n");
+        printf("4.Exit\n");
+        printf("Enter your choice:");
+        scanf("%d",&choice);
+
+        switch(choice){
+            case 1:
+                printf("Enter the value to insert: ");
+                scanf("%d",&value);
+                insert(value);
+                break;
+            case 2:
+                delete();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                return 0;
+            default:
+                printf("Invalid choice, Please try again.\n");
+        }
+    }
+    return 0;
+}
+
+
+
+
+Output - 
+
+ Queue Operations:
+1.Insert
+2.Delete
+3.Display
+4.Exit
+Enter your choice:1
+Enter the value to insert: 8
+Inserted 8 into the queue
+
+ Queue Operations:
+1.Insert
+2.Delete
+3.Display
+4.Exit
+Enter your choice:1
+Enter the value to insert: 9
+Inserted 9 into the queue
+
+ Queue Operations:
+1.Insert
+2.Delete
+3.Display
+4.Exit
+Enter your choice:1
+Enter the value to insert: 7
+Inserted 7 into the queue
+
+ Queue Operations:
+1.Insert
+2.Delete
+3.Display
+4.Exit
+Enter your choice:1
+Enter the value to insert: 5
+Queue Overflow, Cannot insert 5
+
+ Queue Operations:
+1.Insert
+2.Delete
+3.Display
+4.Exit
+Enter your choice:3
+Queue elements are:8 9 7
+
+ Queue Operations:
+1.Insert
+2.Delete
+3.Display
+4.Exit
+Enter your choice:2
+Deleted 8 from the queue
+
+ Queue Operations:
+1.Insert
+2.Delete
+3.Display
+4.Exit
+Enter your choice:2
+Deleted 9 from the queue
+
+ Queue Operations:
+1.Insert
+2.Delete
+3.Display
+4.Exit
+Enter your choice:2
+Deleted 7 from the queue
+
+ Queue Operations:
+1.Insert
+2.Delete
+3.Display
+4.Exit
+Enter your choice:2
+Queue Underflow, Cannot delete element
+
+ Queue Operations:
+1.Insert
+2.Delete
+3.Display
+4.Exit
+Enter your choice:4
