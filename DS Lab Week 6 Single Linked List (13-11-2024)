@@ -1,0 +1,343 @@
+Single Linked List 
+
+Program - 
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+
+void insertAtBeginning(struct Node** head, int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = *head;
+    *head = newNode;
+}
+
+void insertAtEnd(struct Node** head, int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    struct Node* temp = *head;
+
+    newNode->data = data;
+    newNode->next = NULL;
+
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+
+
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+}
+
+
+void insertAtPosition(struct Node** head, int data, int position) {
+    if (position < 1) {
+        printf("Position must be greater than or equal to 1.\n");
+        return;
+    }
+
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+
+    if (position == 1) {
+        newNode->next = *head;
+        *head = newNode;
+        return;
+    }
+
+    struct Node* temp = *head;
+    for (int i = 1; i < position - 1 && temp != NULL; i++) {
+        temp = temp->next;
+    }
+
+    if (temp == NULL) {
+        printf("Position out of range.\n");
+    } else {
+        newNode->next = temp->next;
+        temp->next = newNode;
+    }
+}
+
+
+void deleteFromBeginning(struct Node** head) {
+    if (*head == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    struct Node* temp = *head;
+    *head = (*head)->next;
+    free(temp);
+}
+
+void deleteFromEnd(struct Node** head) {
+    if (*head == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    if ((*head)->next == NULL) {
+        free(*head);
+        *head = NULL;
+        return;
+    }
+
+    struct Node* temp = *head;
+    while (temp->next != NULL && temp->next->next != NULL) {
+        temp = temp->next;
+    }
+
+    free(temp->next);
+    temp->next = NULL;
+}
+
+
+void deleteAtPosition(struct Node** head, int position) {
+    if (*head == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    if (position == 1) {
+        struct Node* temp = *head;
+        *head = (*head)->next;
+        free(temp);
+        return;
+    }
+
+    struct Node* temp = *head;
+    for (int i = 1; i < position - 1 && temp != NULL; i++) {
+        temp = temp->next;
+    }
+
+    if (temp == NULL || temp->next == NULL) {
+        printf("Position out of range.\n");
+    } else {
+        struct Node* nodeToDelete = temp->next;
+        temp->next = temp->next->next;
+        free(nodeToDelete);
+    }
+}
+
+void printList(struct Node* head) {
+    if (head == NULL) {
+        printf("The list is empty.\n");
+        return;
+    }
+
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node* head = NULL;
+    int choice, data, position;
+
+    while (1) {
+        printf("\nSingly Linked List Operations:\n");
+        printf("1. Insert at Beginning\n");
+        printf("2. Insert at End\n");
+        printf("3. Insert at Any Position\n");
+        printf("4. Delete from Beginning\n");
+        printf("5. Delete from End\n");
+        printf("6. Delete from Any Position\n");
+        printf("7. Print List\n");
+        printf("8. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter data to insert at the beginning: ");
+                scanf("%d", &data);
+                insertAtBeginning(&head, data);
+                break;
+
+            case 2:
+                printf("Enter data to insert at the end: ");
+                scanf("%d", &data);
+                insertAtEnd(&head, data);
+                break;
+
+            case 3:
+                printf("Enter data to insert: ");
+                scanf("%d", &data);
+                printf("Enter position: ");
+                scanf("%d", &position);
+                insertAtPosition(&head, data, position);
+                break;
+
+            case 4:
+                deleteFromBeginning(&head);
+                break;
+
+            case 5:
+                deleteFromEnd(&head);
+                break;
+
+            case 6:
+                printf("Enter position to delete: ");
+                scanf("%d", &position);
+                deleteAtPosition(&head, position);
+                break;
+
+            case 7:
+                printList(head);
+                break;
+
+            case 8:
+                exit(0);
+
+            default:
+                printf("Invalid choice! Please try again.\n");
+        }
+    }
+
+    return 0;
+}
+
+
+
+Output - 
+
+Singly Linked List Operations:
+1. Insert at Beginning
+2. Insert at End
+3. Insert at Any Position
+4. Delete from Beginning
+5. Delete from End
+6. Delete from Any Position
+7. Print List
+8. Exit
+Enter your choice: 1
+Enter data to insert at the beginning: 6
+
+Singly Linked List Operations:
+1. Insert at Beginning
+2. Insert at End
+3. Insert at Any Position
+4. Delete from Beginning
+5. Delete from End
+6. Delete from Any Position
+7. Print List
+8. Exit
+Enter your choice: 2
+Enter data to insert at the end: 1
+
+Singly Linked List Operations:
+1. Insert at Beginning
+2. Insert at End
+3. Insert at Any Position
+4. Delete from Beginning
+5. Delete from End
+6. Delete from Any Position
+7. Print List
+8. Exit
+Enter your choice: 3
+Enter data to insert: 5
+Enter position: 2
+
+Singly Linked List Operations:
+1. Insert at Beginning
+2. Insert at End
+3. Insert at Any Position
+4. Delete from Beginning
+5. Delete from End
+6. Delete from Any Position
+7. Print List
+8. Exit
+Enter your choice: 7
+6 -> 5 -> 1 -> NULL
+
+Singly Linked List Operations:
+1. Insert at Beginning
+2. Insert at End
+3. Insert at Any Position
+4. Delete from Beginning
+5. Delete from End
+6. Delete from Any Position
+7. Print List
+8. Exit
+Enter your choice: 4
+
+Singly Linked List Operations:
+1. Insert at Beginning
+2. Insert at End
+3. Insert at Any Position
+4. Delete from Beginning
+5. Delete from End
+6. Delete from Any Position
+7. Print List
+8. Exit
+Enter your choice: 7
+5 -> 1 -> NULL
+
+Singly Linked List Operations:
+1. Insert at Beginning
+2. Insert at End
+3. Insert at Any Position
+4. Delete from Beginning
+5. Delete from End
+6. Delete from Any Position
+7. Print List
+8. Exit
+Enter your choice: 5
+
+Singly Linked List Operations:
+1. Insert at Beginning
+2. Insert at End
+3. Insert at Any Position
+4. Delete from Beginning
+5. Delete from End
+6. Delete from Any Position
+7. Print List
+8. Exit
+Enter your choice: 7
+5 -> NULL
+
+Singly Linked List Operations:
+1. Insert at Beginning
+2. Insert at End
+3. Insert at Any Position
+4. Delete from Beginning
+5. Delete from End
+6. Delete from Any Position
+7. Print List
+8. Exit
+Enter your choice: 6
+Enter position to delete: 1
+
+Singly Linked List Operations:
+1. Insert at Beginning
+2. Insert at End
+3. Insert at Any Position
+4. Delete from Beginning
+5. Delete from End
+6. Delete from Any Position
+7. Print List
+8. Exit
+Enter your choice: 7
+The list is empty.
+
+Singly Linked List Operations:
+1. Insert at Beginning
+2. Insert at End
+3. Insert at Any Position
+4. Delete from Beginning
+5. Delete from End
+6. Delete from Any Position
+7. Print List
+8. Exit
+Enter your choice:
