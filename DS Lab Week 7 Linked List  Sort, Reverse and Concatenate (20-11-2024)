@@ -162,4 +162,129 @@ int main() {
 
 Output -
 
+\
+Menu:
+1. Insert into List 1
+2. Insert into List 2
+3. Display List 1
+4. Display List 2
+5. Sort List 1
+6. Reverse List 1
+7. Concatenate List 2 into List 1
+8. Exit
+Enter your choice: 1
+Enter number of elements to insert in List 1: 4
+Enter value: 1
+Enter value: 2
+Enter value: 3
+Enter value: 4
+
+Menu:
+1. Insert into List 1
+2. Insert into List 2
+3. Display List 1
+4. Display List 2
+5. Sort List 1
+6. Reverse List 1
+7. Concatenate List 2 into List 1
+8. Exit
+Enter your choice: 2
+Enter number of elements to insert in List 2: 2
+Enter value: 6
+Enter value: 7
+
+Menu:
+1. Insert into List 1
+2. Insert into List 2
+3. Display List 1
+4. Display List 2
+5. Sort List 1
+6. Reverse List 1
+7. Concatenate List 2 into List 1
+8. Exit
+Enter your choice: 3
+List 1: 1 -> 2 -> 3 -> 4 -> NULL
+
+Menu:
+1. Insert into List 1
+2. Insert into List 2
+3. Display List 1
+4. Display List 2
+5. Sort List 1
+6. Reverse List 1
+7. Concatenate List 2 into List 1
+8. Exit
+Enter your choice: 4
+List 2: 6 -> 7 -> NULL
+
+Menu:
+1. Insert into List 1
+2. Insert into List 2
+3. Display List 1
+4. Display List 2
+5. Sort List 1
+6. Reverse List 1
+7. Concatenate List 2 into List 1
+8. Exit
+Enter your choice: 5
+List 1 sorted.
+
+Menu:
+1. Insert into List 1
+2. Insert into List 2
+3. Display List 1
+4. Display List 2
+5. Sort List 1
+6. Reverse List 1
+7. Concatenate List 2 into List 1
+8. Exit
+Enter your choice: 6
+List 1 reversed.
+
+Menu:
+1. Insert into List 1
+2. Insert into List 2
+3. Display List 1
+4. Display List 2
+5. Sort List 1
+6. Reverse List 1
+7. Concatenate List 2 into List 1
+8. Exit
+Enter your choice: 3
+List 1: 4 -> 3 -> 2 -> 1 -> NULL
+
+Menu:
+1. Insert into List 1
+2. Insert into List 2
+3. Display List 1
+4. Display List 2
+5. Sort List 1
+6. Reverse List 1
+7. Concatenate List 2 into List 1
+8. Exit
+Enter your choice: 7
+List 2 concatenated into List 1.
+
+Menu:
+1. Insert into List 1
+2. Insert into List 2
+3. Display List 1
+4. Display List 2
+5. Sort List 1
+6. Reverse List 1
+7. Concatenate List 2 into List 1
+8. Exit
+Enter your choice: 3
+List 1: 4 -> 3 -> 2 -> 1 -> 6 -> 7 -> NULL
+
+Menu:
+1. Insert into List 1
+2. Insert into List 2
+3. Display List 1
+4. Display List 2
+5. Sort List 1
+6. Reverse List 1
+7. Concatenate List 2 into List 1
+8. Exit
+Enter your choice:
 
