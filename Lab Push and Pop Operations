@@ -1,0 +1,65 @@
+#include<stdio.h>
+#define MAX_SIZE 5
+
+int top =-1;
+int stack[MAX_SIZE];
+void push (int value){
+    if(top==MAX_SIZE -1){
+    printf("Stack is full %d \n", value);
+    return;
+}
+stack [++top]=value;
+}
+int pop(){
+    if(top==-1){
+        printf("Stack is empty %d \n");
+        return -1;
+    }
+    return stack[top--];
+}
+void printstack() {
+    int i;
+    for (i=0; i<=top; i++){
+        printf("%d", stack[i]);
+    }
+    printf("\n");
+}
+int main(){
+    int flag=0;
+    while(flag==0)
+    {
+        printf("Select one of the following stack operations \n");
+        printf("1.Push \n");
+        printf("2.Pop \n");
+        printf("3.Display \n");
+        printf("4.Exit \n");
+        int option;
+        printf("Enter 1,2,3 or 4 : ");
+        scanf("%d",&option);
+        if (option==1)
+        {
+            printf("Enter elements to be pushed : \n");
+            int elem;
+            scanf("%d",&elem);
+            push(elem);
+        }
+        else if (option==2)
+        {
+            pop();
+        }
+        else if (option ==3)
+        {
+            printstack();
+        }
+        else if (option==4)
+        {
+            flag=1;
+        }
+        else
+        {
+            printf("Please enter 1,2,3 or 4 :  \n");
+            return 0;
+        }
+    }
+
+}
