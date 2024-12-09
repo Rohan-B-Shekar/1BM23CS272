@@ -1,0 +1,68 @@
+Hackerrank Question
+Game of Two Stacks
+
+
+#include <stdio.h>
+
+int twoStacks(int maxSum, int* a, int n, int* b, int m) {
+    // Create prefix sums for stack a
+    int prefix_a[n + 1];
+    prefix_a[0] = 0;
+    for (int i = 0; i < n; i++) {
+        prefix_a[i + 1] = prefix_a[i] + a[i];
+    }
+
+    // Create prefix sums for stack b
+    int prefix_b[m + 1];
+    prefix_b[0] = 0;
+    for (int j = 0; j < m; j++) {
+        prefix_b[j + 1] = prefix_b[j] + b[j];
+    }
+
+    int max_count = 0;
+    int j = m; // Start with the end of stack b
+
+    // Iterate through prefix sums of stack a
+    for (int i = 0; i <= n; i++) {
+        if (prefix_a[i] > maxSum) {
+            break; // No need to check further if the sum of a exceeds maxSum
+        }
+
+        // Move j to the left while the sum of prefix_a[i] + prefix_b[j] is within maxSum
+        while (j > 0 && prefix_a[i] + prefix_b[j] > maxSum) {
+            j--;
+        }
+
+        // Calculate the total count of elements taken
+        max_count = (max_count > i + j) ? max_count : (i + j);
+    }
+
+    return max_count;
+}
+
+int main() {
+    int g;
+    scanf("%d", &g); // Read number of games
+
+    while (g--) {
+        int n, m, maxSum;
+        scanf("%d %d %d", &n, &m, &maxSum); // Read n, m, and maxSum
+
+        int a[n], b[m];
+
+        // Read stack a
+        for (int i = 0; i < n; i++) {
+            scanf("%d", &a[i]);
+        }
+
+        // Read stack b
+        for (int j = 0; j < m; j++) {
+            scanf("%d", &b[j]);
+        }
+
+        // Calculate and print the maximum number of selections
+        printf("%d\n", twoStacks(maxSum, a, n, b, m));
+    }
+
+    return 0;
+}
