@@ -39,31 +39,3 @@ int majorityElement(int* nums, int numsSize) {
 
 
 
-Chat gpt Code-
-
-
-#include <stdio.h>
-
-int majorityElement(int* nums, int n) {
-    int count = 0, candidate;
-
-    // Find the candidate for majority element
-    for (int i = 0; i < n; i++) {
-        if (count == 0) {
-            candidate = nums[i];
-        }
-        count += (nums[i] == candidate) ? 1 : -1;
-    }
-
-    return candidate;
-}
-
-int main() {
-    int nums[] = {3, 2, 3}; // Example input
-    int n = sizeof(nums) / sizeof(nums[0]);
-
-    int majority = majorityElement(nums, n);
-    printf("The majority element is: %d\n", majority);
-
-    return 0;
-}
