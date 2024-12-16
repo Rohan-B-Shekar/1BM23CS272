@@ -99,3 +99,23 @@ int main() {
 
 
 Output - 
+Enter the number of vertices: 4
+Enter the adjacency matrix of the graph (row by row):
+Enter edge between vertex 0 and vertex 0 (0 or 1): 0
+Enter edge between vertex 0 and vertex 1 (0 or 1): 1
+Enter edge between vertex 0 and vertex 2 (0 or 1): 0
+Enter edge between vertex 0 and vertex 3 (0 or 1): 0
+Enter edge between vertex 1 and vertex 0 (0 or 1): 1
+Enter edge between vertex 1 and vertex 1 (0 or 1): 0
+Enter edge between vertex 1 and vertex 2 (0 or 1): 1
+Enter edge between vertex 1 and vertex 3 (0 or 1): 0
+Enter edge between vertex 2 and vertex 0 (0 or 1): 0
+Enter edge between vertex 2 and vertex 1 (0 or 1): 1
+Enter edge between vertex 2 and vertex 2 (0 or 1): 0
+Enter edge between vertex 2 and vertex 3 (0 or 1): 1
+Enter edge between vertex 3 and vertex 0 (0 or 1): 0
+Enter edge between vertex 3 and vertex 1 (0 or 1): 0
+Enter edge between vertex 3 and vertex 2 (0 or 1): 1
+Enter edge between vertex 3 and vertex 3 (0 or 1): 0
+Enter the starting vertex (0 to 3): 1
+BFS Traversal starting from vertex 1: 1 0 2 3 
